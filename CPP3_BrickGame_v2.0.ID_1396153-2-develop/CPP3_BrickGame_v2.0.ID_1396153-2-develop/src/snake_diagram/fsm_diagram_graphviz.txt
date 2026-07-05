@@ -1,0 +1,19 @@
+digraph FSM {
+    rankdir=LR;
+    node [shape=circle];
+    // Состояния
+    Start [label="kStateStart" shape=octagon style=filled fillcolor=lightgrey];
+    Moving [label="kStateMoving" style=filled fillcolor=lightgreen];
+    Paused [label="kStatePaused" style=filled fillcolor=lightblue];
+    GameOver [label="kStateGameOver" shape=hexagon style=filled fillcolor=lightcoral];
+
+    // Переходы
+    Start -> Moving [label="Start"];
+    Start -> GameOver [label="Terminate"];
+    Moving -> Paused [label="Pause"];
+    Moving -> GameOver [label="is_terminated\nor Terminate"];
+    Paused -> Moving [label="Pause"];
+    Paused -> GameOver [label="Terminate"];
+    GameOver -> Start [label="Start"];
+    GameOver -> GameOver [label="Terminate"];
+}

@@ -1,0 +1,17 @@
+UIC = /usr/lib/qt6/libexec/uic
+MOC = /usr/lib/qt6/libexec/moc
+
+debug-vars:
+	@echo "UIC path: $(UIC)"
+	@echo "MOC path: $(MOC)"
+	@echo "UIC exists: $$(test -x $(UIC) && echo yes || echo no)"
+	@echo "MOC exists: $$(test -x $(MOC) && echo yes || echo no)"
+	@$(UIC) --version || echo "UIC failed"
+	@$(MOC) --version || echo "MOC failed"
+
+test-ui:
+	mkdir -p moc
+	$(UIC) brick_game/gui/desktop/snake.ui -o moc/ui_snake.h
+	@echo "UI file generated successfully"
+
+.PHONY: debug-vars test-ui

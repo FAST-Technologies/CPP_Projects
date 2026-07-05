@@ -1,0 +1,31 @@
+# Test materials for cube
+
+newmtl red_material
+Kd 1.0 0.0 0.0
+Ks 0.2 0.2 0.2
+Ns 96.0
+
+newmtl blue_material
+Kd 0.0 0.0 1.0
+Ks 0.2 0.2 0.2
+Ns 96.0
+
+newmtl green_material
+Kd 0.0 1.0 0.0
+Ks 0.2 0.2 0.2
+Ns 96.0
+
+newmtl yellow_material
+Kd 1.0 1.0 0.0
+Ks 0.2 0.2 0.2
+Ns 96.0
+
+newmtl cyan_material
+Kd 0.0 1.0 1.0
+Ks 0.2 0.2 0.2
+Ns 96.0
+
+newmtl magenta_material
+Kd 1.0 0.0 1.0
+Ks 0.2 0.2 0.2
+Ns 96.0

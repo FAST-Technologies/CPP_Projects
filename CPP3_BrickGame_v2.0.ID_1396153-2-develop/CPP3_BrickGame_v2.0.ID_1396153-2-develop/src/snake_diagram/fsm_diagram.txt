@@ -1,0 +1,16 @@
+Анализ состояний и переходов
+Состояния:
+kStateStart: Начальное состояние, ожидание старта или завершения.
+kStateMoving: Активное движение змеи.
+kStatePaused: Пауза во время игры.
+kStateGameOver: Конец игры (поражение или победа).
+Переходы:
+kStateStart -> kStateMoving: Действие Start.
+kStateStart -> kStateGameOver: Действие Terminate.
+kStateMoving -> kStatePaused: Действие Pause.
+kStateMoving -> kStateGameOver: Условие is_terminated (столкновение, длина 200) или действие Terminate.
+kStatePaused -> kStateMoving: Действие Pause.
+kStatePaused -> kStateGameOver: Действие Terminate.
+kStateGameOver -> kStateStart: Действие Start.
+kStateGameOver -> (остаться): Действие Terminate (без явного перехода, только очистка).
+

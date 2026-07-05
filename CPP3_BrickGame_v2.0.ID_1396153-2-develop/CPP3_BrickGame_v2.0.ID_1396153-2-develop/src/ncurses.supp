@@ -1,0 +1,155 @@
+{
+   ncurses_newterm_strdup_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:strdup
+   obj:*/libtinfo.so*
+   fun:_nc_first_db
+   fun:_nc_read_entry2
+   obj:*/libtinfo.so*
+   fun:_nc_setupterm
+   fun:newterm_sp
+   fun:newterm
+}
+
+{
+   ncurses_newterm_calloc_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   fun:_nc_first_db
+   fun:_nc_read_entry2
+   obj:*/libtinfo.so*
+   fun:_nc_setupterm
+   fun:newterm_sp
+   fun:newterm
+}
+
+{
+   ncurses_newterm_malloc_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   fun:_nc_first_db
+   fun:_nc_read_entry2
+   obj:*/libtinfo.so*
+   fun:_nc_setupterm
+   fun:newterm_sp
+   fun:newterm
+}
+
+{
+   ncurses_printw_malloc_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   obj:*/libncurses.so*
+   fun:vw_printw
+   fun:mvprintw
+}
+
+{
+   ncurses_general_libtinfo_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   obj:*/libtinfo.so*
+}
+
+{
+   ncurses_general_libncurses_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:malloc
+   obj:*/libncurses.so*
+}
+
+{
+   ncurses_calloc_libtinfo_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   obj:*/libtinfo.so*
+}
+
+{
+   ncurses_calloc_libncurses_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:calloc
+   obj:*/libncurses.so*
+}
+
+{
+   ncurses_realloc_libtinfo_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:realloc
+   obj:*/libtinfo.so*
+}
+
+{
+   ncurses_realloc_libncurses_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:realloc
+   obj:*/libncurses.so*
+}
+
+# Suppression for terminal database initialization
+{
+   ncurses_terminfo_init
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:*alloc
+   ...
+   fun:_nc_*
+}
+
+# Suppression for setupterm function
+{
+   ncurses_setupterm_leak
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:*alloc
+   ...
+   fun:*setupterm*
+}
+
+# Suppression for screen initialization
+{
+   ncurses_screen_init
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:*alloc
+   ...
+   fun:newterm*
+}
+
+# Suppression for window creation
+{
+   ncurses_window_creation
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:*alloc
+   ...
+   fun:newwin*
+}
+
+# General suppression for ncurses internal structures
+{
+   ncurses_internal_structures
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:*alloc
+   obj:*/libncurses*
+}
+
+{
+   ncurses_tinfo_internal_structures
+   Memcheck:Leak
+   match-leak-kinds: reachable
+   fun:*alloc
+   obj:*/libtinfo*
+}

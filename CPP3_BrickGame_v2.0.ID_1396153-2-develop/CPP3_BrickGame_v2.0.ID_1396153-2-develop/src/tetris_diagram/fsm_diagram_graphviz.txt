@@ -1,0 +1,21 @@
+digraph TetrisFSM {
+  rankdir=LR;
+  node [shape=circle, fontsize=12];
+  edge [fontsize=10];
+
+  Start [label="kStateStart"];
+  Spawn [label="kStateSpawn"];
+  Moving [label="kStateMoving"];
+  Paused [label="kStatePaused"];
+  GameOver [label="kStateGameOver"];
+
+  Start -> Moving [label="Start"];
+  Start -> GameOver [label="Terminate"];
+  Spawn -> Moving [label="New Tetromino"];
+  Moving -> Paused [label="Pause"];
+  Moving -> GameOver [label="Terminate\nor is_terminated"];
+  Paused -> Moving [label="Pause"];
+  Paused -> GameOver [label="Terminate"];
+  GameOver -> Start [label="Start"];
+  GameOver -> GameOver [label="Terminate"];
+}

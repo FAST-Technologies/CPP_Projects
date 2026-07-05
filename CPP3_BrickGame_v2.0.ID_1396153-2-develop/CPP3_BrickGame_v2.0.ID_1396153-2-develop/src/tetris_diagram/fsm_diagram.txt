@@ -1,0 +1,35 @@
+[EN]: Refined State Diagram
+States
+kStateStart: Waiting for game start.
+kStateSpawn: Temporary state for new tetromino generation.
+kStateMoving: Active gameplay with tetromino movement.
+kStatePaused: Game paused.
+kStateGameOver: Game ended, awaiting restart or quit.
+Transitions
+kStateStart → kStateMoving: Start action.
+kStateStart → kStateGameOver: Terminate action.
+kStateSpawn → kStateMoving: Automatic (new tetromino).
+kStateMoving → kStatePaused: Pause action.
+kStateMoving → kStateGameOver: Terminate action or is_terminated (e.g., collision at top).
+kStatePaused → kStateMoving: Pause action.
+kStatePaused → kStateGameOver: Terminate action.
+kStateGameOver → kStateStart: Start action.
+kStateGameOver → kStateGameOver: Terminate action (no state change).
+
+[RU]: Уточненная диаграмма состояния
+Состояния
+kStateStart: Ожидание начала игры.
+kStateSpawn: Временное состояние для нового поколения тетромино.
+kStateMoving: Активный игровой процесс с перемещением тетромино.
+kStatePaused: Игра приостановлена.
+kStateGameOver: Игра завершена, ожидается перезапуск или выход из нее.
+Переходы
+kStateStart → kStateMoving: Начать действие.
+kStateStart → kStateGameOver: Завершить действие.
+kStateSpawn → kStateMoving: Автоматически (новый тетромино).
+kStateMoving → kStatePaused: Приостановить действие.
+kStateMoving → kStateGameOver: Завершить действие или is_terminated (например, столкновение в верхней части).
+kStatePaused → kStateMoving: Приостановить действие.
+kStatePaused → kStateGameOver: Завершить действие.
+kStateGameOver → kStateStart: Начать действие.
+kStateGameOver → kStateGameOver: Завершить действие (состояние не меняется).
